@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:flutter/rendering.dart';
 
 void main() => runApp(new MyApp());
 
@@ -7,7 +8,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Sticky Header example',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -35,22 +35,64 @@ class MainScreen extends StatelessWidget {
     //slivers.add(_buildExample());
     //slivers.add(_buildBuilderExample());
     int i = 0;
-    slivers.add(SliverAppBar(
-      backgroundColor: Colors.blue.withOpacity(0.5),
-      title: Text('text'),
-      pinned: true,
-    ));
-    slivers.add(SliverAppBar(
-      backgroundColor: Colors.yellow.withOpacity(0.5),
-      title: Text('text'),
-      pinned: true,
-    ));
-    slivers.addAll(_buildHeaderBuilderLists(context, i, i += 5));
-    slivers.addAll(_buildLists(context, i, i += 3));
-    slivers.addAll(_buildGrids(context, i, i += 3));
-    slivers.addAll(_buildSideHeaderGrids(context, i, i += 3));
-    slivers.addAll(_buildHeaderBuilderLists(context, i, i += 5));
+//    slivers.add(SliverAppBar(
+//      backgroundColor: Colors.blue.withOpacity(0.5),
+//      title: Text('text'),
+//      pinned: true,
+//    ));
+//    slivers.add(SliverAppBar(
+//      backgroundColor: Colors.yellow.withOpacity(0.5),
+//      title: Text('text'),
+//      pinned: true,
+//    ));
+    slivers.add(buildCusomHeader());
+    slivers.add(_buildcustomBuilderLists());
+//    slivers.addAll(_buildLists(context, i, i += 2));
+//    slivers.addAll(_buildGrids(context, i, i += 3));
+//    slivers.addAll(_buildSideHeaderGrids(context, i, i += 3));
+//    slivers.addAll(_buildHeaderBuilderLists(context, i, i += 5));
     return slivers;
+  }
+
+  Widget _buildTab() {
+    return new Container(
+      height: 60.0,
+      color: Colors.lightBlue,
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      alignment: Alignment.centerLeft,
+      child: new Text(
+         'tabtabtabtatat',
+        style: const TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
+  Widget _buildcustomBuilderLists() {
+    return new SliverStickyHeader(
+      header: _buildTab(),
+      sliver:  SliverToBoxAdapter(
+        child: Container(
+          height: 1000,
+          color: Colors.green,
+          child: Center(
+            child: Text("childasoidhasg"),
+          ),
+        ),
+      )
+    );
+  }
+
+
+  Widget buildCusomHeader() {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: 300,
+        color: Colors.grey,
+        child: Center(
+          child: Text("124127649817264981769"),
+        ),
+      ),
+    );
   }
 
   List<Widget> _buildLists(BuildContext context, int firstIndex, int count) {
@@ -88,7 +130,7 @@ class MainScreen extends StatelessWidget {
                   ),
                   title: new Text('List tile #$i'),
                 ),
-            childCount: 4,
+            childCount: 40,
           ),
         ),
       );
