@@ -70,15 +70,15 @@ class MainScreen extends StatelessWidget {
   Widget _buildcustomBuilderLists() {
     return new SliverStickyHeader(
       header: _buildTab(),
-      sliver:  SliverToBoxAdapter(
-        child: Container(
-          height: 1000,
-          color: Colors.green,
-          child: Center(
-            child: Text("childasoidhasg"),
-          ),
-        ),
-      )
+//      sliver:  SliverToBoxAdapter(
+//        child: Container(
+//          height: 1000,
+//          color: Colors.green,
+//          child: Center(
+//            child: Text("childasoidhasg"),
+//          ),
+//        ),
+//      )
     );
   }
 
